@@ -36,4 +36,13 @@ public class LoginserviceImpl implements LoginService {
 
         return  map;
     }
+
+    @Override
+    public Map<String, Object> selectAll() {
+        Map<String,Object> map = new HashMap<String,Object>();
+        System.out.println(123);
+        List<User> users = userMapper.selectAll();
+        map.put("users",users);
+        return map;
+    }
 }

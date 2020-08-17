@@ -38,7 +38,8 @@
 		<!--spring-boot-devtools是一个为开发者服务的一个模块，
                 其中最重要的功能就是当代码发生改变的时候
                 监听classpath下的文件变动，并且会立即重启应用程序，
-                但是速度比手动停止后再启动更快-->
+                但是速度比手动停止后再启动更快
+               -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -86,16 +87,26 @@
 			<version>2.4</version>
 			<classifier>jdk15</classifier>
 		</dependency>
-
+		<!--JWT：JSON Web Token-->
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.8.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<!--定义maven插件-->
 		<plugins>
-			<!--简化web程序的部署，将程序打包成可以直接运行的jar文件-->
+			<!--简化web程序的部署，将程序打包成可以直接运行的jar文件
+			 ***ture 会使debugger失效-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>false</fork>
+					<jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+				</configuration>
 			</plugin>
 			<!-- mybatis 逆向工程maven工具 -->
 			<plugin>

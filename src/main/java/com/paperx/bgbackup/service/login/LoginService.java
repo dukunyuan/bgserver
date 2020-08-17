@@ -7,5 +7,5 @@ import java.util.Map;
 
 public interface LoginService {
     Map<String, Object> check(User user);//校验用户
-
+    Map<String, Object> selectAll();
 }

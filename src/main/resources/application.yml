@@ -1,5 +1,7 @@
 server:
   port: 8088
+  servlet:
+    context-path: /paperx
   #设置控制台日志级别
   #OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL
 #日志级别配置
