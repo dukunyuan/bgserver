@@ -17,6 +17,7 @@ public class LoginserviceImpl implements LoginService {
     public Map<String, Object> check(User user) {
         //提示信息
        String msg ="";
+       String code = "";
        Map<String,Object> map = new HashMap<String,Object>();
 //        //查用户
         List<User> users = userMapper.searchUser(user.getUsername());
@@ -25,15 +26,20 @@ public class LoginserviceImpl implements LoginService {
 //            //密码验证
             String inputPassword = user.getPassword();
             if (inputPassword.equalsIgnoreCase(dbUser.getPassword())){
+
                 map.put("currentUser",dbUser);
+                msg = "登陆成功";
+                code = "200";
             }else{
                 msg = "用户名或密码错误";
+                code = "500";
             }
         } else {
             msg = "用户不存在";
+            code = "500";
         }
         map.put("msg",msg);
-
+        map.put("code",code);
         return  map;
     }
 

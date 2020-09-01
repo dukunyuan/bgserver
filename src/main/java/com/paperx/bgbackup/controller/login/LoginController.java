@@ -32,7 +32,7 @@ private TokenService tokenService;
         //获取map中的用户信息
         user = (User) map.get("currentUser");
         request.getSession().setAttribute("currentUser",user);
-        System.out.println(user);
+        //System.out.println(user);
         String token = tokenService.getToken(user);
         map.put("token",token);
         try {
