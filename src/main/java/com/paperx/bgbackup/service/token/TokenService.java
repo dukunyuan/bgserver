@@ -12,7 +12,7 @@ public class TokenService {
         String token="";
 //        token= JWT.create().withAudience(user.getId())// 将 user id 保存到 token 里面
 //                .sign(Algorithm.HMAC256(user.getPassword()));// 以 password 作为 token 的密钥
-        token= TokenUtils.token(user.getUsername(),user.getPassword());
+        token= TokenUtils.token(user.getUsername(),user.getId());
         return token;
     }
 }

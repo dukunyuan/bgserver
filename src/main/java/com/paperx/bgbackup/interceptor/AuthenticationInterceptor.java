@@ -43,8 +43,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 if (token == null) {
                     throw new RuntimeException("无token，请重新登录");
                 }
-                // 获取 token 中的 username
+                // 获取 token 中的 username userId
                 String username;
+                String userId;
                 try {
                     username = JWT.decode(token).getClaim("username").asString();
                 } catch (JWTDecodeException j) {
@@ -62,10 +63,14 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 //                    throw new RuntimeException("401");
 //                }
 //                return true;
-                TokenUtils.verify(token);
+
             }
         }
-        return true;
+        if (TokenUtils.verify(token)){
+            return true;
+        }else {
+            throw new RuntimeException("登录过期，请重新登录");
+        }
     }
 
     @Override

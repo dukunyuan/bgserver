@@ -1,5 +1,6 @@
 package com.paperx.bgbackup.controller.login;
 
+import com.paperx.bgbackup.annotation.PassToken;
 import com.paperx.bgbackup.annotation.UserLoginToken;
 import com.paperx.bgbackup.model.user.User;
 import com.paperx.bgbackup.service.login.LoginService;
@@ -25,6 +26,7 @@ private LoginService loginService;
 @Autowired
 private TokenService tokenService;
     //登录
+    @PassToken
     @PostMapping("/login")
     public void login(HttpServletRequest request, HttpServletResponse response, @RequestBody User user){
         System.out.println(user.getUsername());

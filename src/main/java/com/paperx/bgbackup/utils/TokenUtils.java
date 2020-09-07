@@ -14,12 +14,12 @@ import java.util.Map;
  * @author dky
  **/
 public class TokenUtils {
-    //设置过期时间
-    private static final long EXPIRE_DATE=30*60*100000;
+    //设置过期时间 30*60*
+    private static final long EXPIRE_DATE=10000;
     //token秘钥
     private static final String TOKEN_SECRET = "ZCfasfhuaUUdugewudi12020BQWE";
 
-    public static String token (String username,String password){
+    public static String token (String username,String userId){
 
         String token = "";
         try {
@@ -35,7 +35,7 @@ public class TokenUtils {
             token = JWT.create()
                     .withHeader(header)
                     .withClaim("username",username)
-                    .withClaim("password",password).withExpiresAt(date)
+                    .withClaim("userId",userId).withExpiresAt(date)
                     .sign(algorithm);
         }catch (Exception e){
             e.printStackTrace();
@@ -61,10 +61,10 @@ public class TokenUtils {
     }
     public static void main(String[] args) {
         String username ="zhangsan";
-        String password = "123";
-        String token = token(username,password);
+        String userId = "123";
+        String token = token(username,userId);
         System.out.println(token);
-        String tk = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IjEyMyIsImV4cCI6MTU5NjEyNjk3NywidXNlcm5hbWUiOiJ6aGFuZ3NhbiJ9.BqEFAaCwc0qA0b6R7dIAfAgY4USj5gmoFTenQnGvJSE";
+        String tk = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IjEyMyIsImV4cCI6MTU5ODk3NDE1NSwidXNlcm5hbWUiOiJ6aGFuZ3NhbiJ9.Ea1typqVeisnmZRq8uJ0lCGj3cTBepH5rpSYrV-R_eY";
         boolean b = verify(tk);
         System.out.println(b);
     }
