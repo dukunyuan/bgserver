@@ -9,6 +9,8 @@ public class User {
 
     private String password;
 
+    private String email;
+
     private String userinfoId;
 
     private Date createtime;
@@ -67,6 +69,14 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setRole(String role) {
